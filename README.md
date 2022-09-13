@@ -7,4 +7,4 @@ Twitter Bot detector
 Website where a user logins with their twitter account.	
 	- the website pulls up the accounts that the user follows\
 		- shows a toxity meter of their friends/followers\
-	-\
+	-
