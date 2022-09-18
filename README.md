@@ -10,8 +10,8 @@ Website where a user logins with their twitter account. - the website pulls up t
 Simple clone this repo
 
 #### Dependencies
-This web app is built using Node.js. So Node.js and NPM MUST be installed
-Being an app which uses the Twitter API, it will require a twitter API key, secret, and bearer token to be stored in 3 different environment variables
+This web app is built using Node.js. So Node.js and NPM MUST be installed.
+Being an app which uses the Twitter API, it will require a twitter API key, secret, and bearer token to be stored in 3 different environment variables.
 These variables MUST be named as follows:
 TWITTER_API_KEY
 TWITTER_API_SECRET
