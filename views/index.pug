@@ -3,5 +3,22 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  p Twitter data is: 
-  p #{twit}
+  p Please give us your Twitter Username.
+  p Our website has two functions: 
+  p 1. You can give us the username of one of your followers, and we can tell you if they are a bot 
+  form(action="/bot_detect")
+    input(type="text" id="follower" name="follower")
+    br
+    input(type="submit" value="Evaulate follower")
+  p 2. You can also click the button below to get suggestions on how to reply to replies on your post 
+  p In more detail, there are several parameters you can pass, or you press the submit button with the default values
+  form(action="/get_sugesstions")
+    label(for="username") Your username
+    br
+    input(type="text" id="username" name="username")
+    br
+    label(for="top_followers") The top N replies (by impressions) from which you will get suggestions for (default is 10)
+    br
+    input(type="text" id="top_followers" name="top_followers" value="10")
+    br
+    input(type="submit" value="Get suggestions!")
