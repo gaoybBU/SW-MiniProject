@@ -35,19 +35,19 @@ async function getRequest() {
 /* GET home page. */
 router.get('/', async(req, res, next) => {
 
-  let data;
+  // let data;
 
-  try {
-    // Make request
-    const response = await getRequest();
-    data = response
+  // try {
+  //   // Make request
+  //   const response = await getRequest();
+  //   data = response
 
-  } catch (e) {
-    data = 'we have an error'
-  }
+  // } catch (e) {
+  //   data = 'we have an error'
+  // }
 
-  console.log(data)
-  res.render('index', { title: 'Express' , twit: JSON.stringify(data) });
+  // console.log(data)
+  res.render('index', { title: 'Express' });
 });
 
 module.exports = router;
