@@ -8,7 +8,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var twitter_loginRouter = require('./routes/twitter_login');
-var bot_detectRouter = require('./routes/bot_detect');
+var sentimentRouter = require('./routes/sentiment');
+var get_suggestionsRouter = require('./routes/get_suggestions')
 
 var app = express();
 
@@ -25,8 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/twitter_login', twitter_loginRouter);
-app.use('/bot_detect', bot_detectRouter);
-
+app.use('/sentiment', sentimentRouter);
+app.use("/get_sugesstions", get_suggestionsRouter);
 
 
 // catch 404 and forward to error handler
