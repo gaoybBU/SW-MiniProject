@@ -5,12 +5,12 @@ block content
   p Welcome to #{title}
   p Please give us your Twitter Username.
   p Our website has two functions: 
-  p 1. You can give us the username of one of your followers, and we can tell you if they are a bot 
-  form(action="/bot_detect")
+  h5 1. You can give us the username of one of your followers, and we can give you how "postive" or "negative" they were, based on their most recent tweets 
+  form(action="/sentiment")
     input(type="text" id="follower" name="follower")
     br
     input(type="submit" value="Evaulate follower")
-  p 2. You can also click the button below to get suggestions on how to reply to replies on your post 
+  h5 2. You can also click the button below to get suggestions on how to reply to replies on your post 
   p In more detail, there are several parameters you can pass, or you press the submit button with the default values
   form(action="/get_sugesstions")
     label(for="username") Your username
