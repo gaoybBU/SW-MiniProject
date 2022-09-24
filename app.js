@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var twitter_loginRouter = require('./routes/twitter_login');
 var bot_detectRouter = require('./routes/bot_detect');
+var get_suggestionsRouter = require('./routes/get_suggestions')
 
 var app = express();
 
@@ -26,8 +27,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/twitter_login', twitter_loginRouter);
 app.use('/bot_detect', bot_detectRouter);
-
-
+app.use("/get_sugesstions", get_suggestionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
