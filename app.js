@@ -4,8 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var twitter_loginRouter = require('./routes/twitter_login');
+var bot_detectRouter = require('./routes/bot_detect');
 
 var app = express();
 
@@ -21,6 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/twitter_login', twitter_loginRouter);
+app.use('/bot_detect', bot_detectRouter);
+
 
 
 // catch 404 and forward to error handler
