@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "famous-fiber-363120",
+    "private_key_id": "4fdc979bd9805dcbbe0fba4e3a3c2c5752bc5cf2",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDecMkmcErb2GXK\nj/UNhY5Dc4EDWjD74JmAexeTGZXtHNWfZoUIfPehY0P/eu9wcQLy2tST9YB32wio\nv0evQOu3M0MGWFMQH3VmLuWIoz1jpD27oy1YIJKKCyxG4XmeluMQ3OqxWbdna4bn\n5Z2+h/mfzNTbj+EAfdoZ/XG7A+cnC3HUIre0mUFubwcrb0DtzZ8pm6V+P0u4WjhM\njNeYhlo4FgKvYIJPbLc+ytLTdtNEBCjRBKCqTLkpPg9BduBYrSOeFETAefl3be53\nN0HJGufjf5lVaiuBbHo+vDoL8NclcjBYuJu/KUBNTBMXJhHTZwufvdZMqktUZ+m/\n8rVv5sLzAgMBAAECggEAROVFACFWpkobmQZGfbYojo63XlzwgAscMDWv4xFRJPxB\n1BmySaM/JZ7zwC0I/VgbdDHAFsW60SSnxXBdWRQwDfGUKGJx87PyrkAHOu9og7Sq\npDPRxxJroNL+F0Qd4bdVQ/NQw7aIfkFJKwks9wbxk4OjSBADvh280ED2GVkHnsky\nUwHk7SIThbLEJCF9sla0Yg3Pj1iMQDyLXk/RjWWr2IuPIPvBL9iDoWDJ8kzM10nv\nXx5sqMBU0vaNBVOtZiwHjuM4zs9JTXRWD3B9rBpp635tFpsMs0BrZAeq4FPRp/zk\nIgjR+7XeI8HBMP110RWt8PFevGFAm0GNscH9GawbWQKBgQDzBUJvBpRxMUmTP8Ap\nP+ta8PkH7upIDpN1W4Be6UVV6JLjRrKUNKJLOkhAfwXmPj74tsjrXSi0SaccnvHO\nuymQy4B+8kFz1iyLuLQj0aZpWUXfQwKMpDj37BhiE2Qf16DlsvjyXzXCusBrtUGz\niSexgT7jwXLAVEmZgsuVM8596wKBgQDqUiSYrQW+p5LJSOIdlwnz80sTY8HO+vEp\nMxtXqG86xzFaIpQPq2uBjbbpo9d6CJq8EtHxQWY2AVCpoHlkze5y9cEVlLW+KlmT\nLRxF4bYWez0EeYEWD3bCcRJMd0OTBBuCpQfIJA2sqCtzsKG5TwCNKEwwafwvk+A5\n7/XPM7ylGQKBgQDnEqovfXcqBe5ql6R01HVKPHTeKTsVFt75KO7v0CiAXitE9dUZ\nfM6QbzOCOAV4/tjLjqmOuj7Y5muCmFNd+bK1HfrpOhooNY6XsCGBKXhtFViNyF6l\nMgWFHzW0E7IRYOt5XWq+su8gYIhUIb3+Izzd2AHfd/JPlBWDZM2E6gS+zwKBgGEl\nqzyNR3ty+D1xdSW1cA/vB2pDip+olIFzSdu+3latLP3kpiQU+t5chcA6CGT02kot\nN1NhvOGZC/s3p/yuEDUjRGkRHYR5BGgrZLRoTtjlQTfwtB8UTDVzMZX4QFDcfBdf\nGmnU4MJ7eoBdc79jTKQ5V9Ueq8qB8Y2zueKs3YJJAoGBAKNRFHclLeJj9I0SLiHm\n1Y+0Stw+OMPpRi9OHoa0S3c80bnZ5R/BOnXsoSRyLClZ04NXgfAmQgItPIW8pAU+\nRTnsq+x2Hx3UbyboqVr+4tS4yeiTc7kLarUWpcs6A/woaxGWpc3+yAZHt/tWic0w\nrB4SMYSHB3eoufa/ADJHQEn2\n-----END PRIVATE KEY-----\n",
+    "client_email": "nlp-service@famous-fiber-363120.iam.gserviceaccount.com",
+    "client_id": "111138294278567295283",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nlp-service%40famous-fiber-363120.iam.gserviceaccount.com"
+  }
+  
