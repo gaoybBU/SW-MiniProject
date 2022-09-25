@@ -105,6 +105,7 @@ async function getUserID(username) {
 };
 
 async function getTopComment(uid, top_c, t_since) {
+    // Given the user's id, the oldest time
 
     let userComments = Array();
     let userReplies = Array();
