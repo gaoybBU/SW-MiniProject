@@ -80,7 +80,7 @@ router.get('/', async (req, res, next) => {
     let uid = await getUserID(username);
     let tweets = await getUserComment(uid);
     let sentiment = await getSentiment(tweets)
-    res.send("Bot detecting! Sentiment score is " + sentiment.score);
+    res.render('sentiment', {sentiment : sentiment, follower : username});
 })
 
 module.exports = router;

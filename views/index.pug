@@ -25,4 +25,9 @@ block content
       br
       input(type="text" id="top_followers" name="top_followers" value="10")
       br
+      label(for="oldest_time") The maximum age of your tweets (in hours), from which we will look at to find replies (default is 48)
+      label(for="oldest_time" style="font-size:11px") I.e If you chose 10, we'll find suggestions for replies on tweets you made 10 hours ago
+      br
+      input(type="text" id="oldest_time" name="oldest_time" value="48")
+      br
       input(type="submit" value="Get suggestions!")
