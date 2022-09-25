@@ -189,8 +189,29 @@ router.get('/', async (req, res, next) => {
     let top_comments = await getTopComment(uid, top_c, t_since);
 
     let suggestions = await getSuggestions(top_comments);
+    let tweet_threads = Array();
 
-    res.send(suggestions.toString());
+    for (i = 0; i < suggestions.length; i++) {
+        let thread = {};
+        thread["tweet"] = top_comments[i]['comment'];
+        thread["reply"] = top_comments[i]['text'];
+        thread["suggestion"] = suggestions[i];
+        tweet_threads.push(thread);
+    }
+
+    // let thread1 = {};
+    // let thread2 = {};
+    // thread1["tweet"] = "Starlink connecting schools in the Amazon https://t.co/Xy70D0sk8N"
+    // thread1["reply"] = "@elonmusk Elon Thank u for what you did for Ukraine and what you have said will do for the people of Iran who are putting their lives on the line to get rid of an oppressive Islamic dictatorship.  Would you consider donating several hundred Starlink terminals? @elonmusk #HelpIranianPeople"
+    // thread1["suggestion"] = "Wow, I had no idea that Starlink could be used to help connect people in such remote areas! I will definitely look into this and see if there is anything we can do to help. Thank you for bringing this to my attention!"
+    // thread2["tweet"] = "My tweets are being suppressed!"
+    // thread2["reply"] = "@elonmusk I hadn’t been seeing them and thought you weren’t posting. Only saw it at someone quote RT’ed Lex’s reply to you. Definitely something is up."
+    // thread2["suggestion"] = "Thanks for letting me know! I'm not sure what's going on, but I'll look into it."
+    // tweet_threads.push(thread1);
+    // tweet_threads.push(thread2);
+
+
+    res.render('suggestions', {tweet_threads : tweet_threads});
 })
 
 module.exports = router;
