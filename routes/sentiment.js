@@ -2,7 +2,8 @@ var express = require('express');
 const needle = require('needle');
 const OAuth = require('oauth-1.0a');
 const crypto = require('crypto');
-const qs = require('querystring')
+const qs = require('querystring');
+const language = require('@google-cloud/language');
 
 var router = express.Router();
 const bearerToken = process.env.TWITTER_BEARER_TOKEN;
@@ -56,26 +57,22 @@ async function getUserComment(uid) {
 }
 
 async function getSentiment(tweets) {
-    // Imports the Google Cloud client library
-    const language = require('@google-cloud/language');
 
     // Instantiates a client
     const client = new language.LanguageServiceClient();
 
-    // tweets is an Array() of strings, each string is a user's tweet
-    // For now, use the following as a test array:
     const text = tweets.join("\n\n");
+
     const document = {
         content: text,
         type: 'PLAIN_TEXT',
     };
-
     // Detects the sentiment of the text
     const [result] = await client.analyzeSentiment({document: document});
     let sentiment = result.documentSentiment;
     console.log(sentiment)
 
-    return sentiment
+    return sentiment;
 }
 
 router.get('/', async (req, res, next) => {
@@ -87,3 +84,4 @@ router.get('/', async (req, res, next) => {
 })
 
 module.exports = router;
+
