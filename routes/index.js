@@ -47,7 +47,14 @@ router.get('/', async(req, res, next) => {
   // }
 
   // console.log(data)
-  res.render('index', { title: 'Express' });
+  user = null;
+
+  if (req.cookies.username) {
+    user = {username: req.cookies.username}
+    console.log(req.cookies.username);
+  }
+
+  res.render('index', { title: 'Express' , user : user});
 });
 
 module.exports = router;
