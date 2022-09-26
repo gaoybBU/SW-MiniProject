@@ -8,7 +8,7 @@ block content
     h2 Tweet #{i + 1}
     h5 Your tweet:
     li(style="background-color:Tomato;")= tweet_threads[i]["tweet"]
-    h5 Reply
+    h5 Reply (<a target="_blank" href=#{tweet_threads[i]["url"]}>Quick Link</a>)
     li(style="background-color:Orange;")= tweet_threads[i]["reply"]
     h5 Suggestion:
     li(style="background-color:mediumseagreen;")= tweet_threads[i]["suggestion"]

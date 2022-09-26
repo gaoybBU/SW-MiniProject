@@ -2,22 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Senior Design Mini Project
 
   if !user
     p Please log in to Twitter before starting by <a href="/twitter_login">clicking here</a>
   else
     p Welcome, #{user["username"]}
     p Our website has two functions: 
-    h5 1. You can give us the username of one of your followers, and we can give you how "postive" or "negative" they were, based on their most recent tweets 
+    h3 1. You can give us the username of any twitter user, and we can give you how "postive" or "negative" they were, based on their most recent tweets 
     form(action="/sentiment")
       input(type="text" id="follower" name="follower")
       br
       input(type="submit" value="Evaulate follower")
-    h5 2. You can also click the button below to get suggestions on how to reply to replies on your post 
+    h3 2. You can also click the button below to get suggestions on how to reply to replies on somebody's post 
     p In more detail, there are several parameters you can pass, or you press the submit button with the default values
     form(action="/get_sugesstions")
-      label(for="username") Your username
+      label(for="username") Any username
       br
       input(type="text" id="username" name="username")
       br
