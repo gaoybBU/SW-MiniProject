@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const qs = require('querystring');
 const { Configuration, OpenAIApi } = require("openai");
 const fs = require('fs');
+const { url } = require('inspector');
 
 var router = express.Router();
 
@@ -81,8 +82,7 @@ async function getReplies(comments) {
         }
     }
 
-    console.log("A reply")
-    console.log(userReplies[0])
+    console.log("Number of replies: " + userReplies.length)
     return userReplies;
 }
 
@@ -99,13 +99,12 @@ async function getUserID(username) {
     }
 
     const resp = await needle('get', getIdURL, params, options);
-    console.log(resp.body["data"][0]["id"])
     return resp.body["data"][0]["id"].toString();
 
 };
 
 async function getTopComment(uid, top_c, t_since) {
-    // Given the user's id, the oldest time
+    // Given the user's id, the oldest time of their comment, and how many replies we want to get, return the top N replies
 
     let userComments = Array();
     let userReplies = Array();
@@ -118,7 +117,6 @@ async function getTopComment(uid, top_c, t_since) {
         "start_time" : t_since,
         "max_results" : 10
     }
-
     const options = {
         headers: {
             "User-Agent": "v2QuoteTweetsJS",
@@ -129,11 +127,14 @@ async function getTopComment(uid, top_c, t_since) {
     // First, get the user's tweets until the oldest given time
     let resp = await needle('get', getTweetsURL, params, options);
     
+    // TODO: Check if the number of comments is greater than 0. Edge case
+
     for (const comment of resp.body["data"]) {
         // Push in comment object, id and all
         userComments.push(comment);
     }
-    console.log(resp.body["meta"]);
+    
+    maxComments = 20;
 
     // Paginate through the user's tweets
     while (resp.body["meta"]["next_token"]) {
@@ -145,21 +146,26 @@ async function getTopComment(uid, top_c, t_since) {
             "max_results" : 10
         }
         resp = await needle('get', getTweetsURL, params, options);
-        for (const comment of resp.body["data"]) {
-            userComments.push(comment);
+        if (resp.body["data"]) {
+            for (const comment of resp.body["data"]) {
+                if (userComments.length < maxComments) {
+                    userComments.push(comment);
+                } else break
+            }
         }
+
+        if (userComments.length > maxComments) break;
     }
 
-    console.log("Number of user comments")
-    console.log(userComments.length);
-    console.log(userComments[0])
+    console.log("Number of user comments: " + userComments.length)
+    console.log("Example user tweet: " + userComments[0])
 
     // Get the array of replies to those tweets (more specific detail in function)
     userReplies = await getReplies(userComments);
     
     // Sort from leat liked to most liked, then get top k replies
     userReplies.sort(reply_sort)
-    console.log(userReplies[userReplies.length - 1])
+    console.log("Number of replies: " + userReplies[userReplies.length - 1])
 
     let topReplies = Array();
     for (var i = 0; i < top_c; i++) {
@@ -181,17 +187,41 @@ async function getSuggestions(comments) {
     return completions;
 };
 
+function getCommentURL(comments_arr) {
+    let url_arr = Array();
+    for (const comment_obj of comments_arr) {
+        let id = comment_obj['id'];
+        let url = `https://twitter.com/BOI/status/${id}`;
+        url_arr.push(url);
+    }
+
+    return url_arr
+}
+
 router.get('/', async (req, res, next) => {
     let username = req.query.username;
     let top_c = req.query.top_followers;
     let hours_since = 500;
     let t_since = new Date((new Date().getTime() / 1000 - (hours_since * 3600)) * 1000).toISOString();
+
     let uid = await getUserID(username);
     let top_comments = await getTopComment(uid, top_c, t_since);
-
+    let comments_url = getCommentURL(top_comments);
     let suggestions = await getSuggestions(top_comments);
+    let tweet_threads = Array();
 
-    res.send(suggestions.toString());
+    for (i = 0; i < suggestions.length; i++) {
+        let thread = {};
+        thread["tweet"] = top_comments[i]['comment'];
+        thread["reply"] = top_comments[i]['text'];
+        thread["suggestion"] = suggestions[i];
+        thread["url"] = comments_url[i];
+        tweet_threads.push(thread);
+    }
+
+    res.render('suggestions', {tweet_threads : tweet_threads});
 })
+
+
 
 module.exports = router;

@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 Sentiment Analysis
+  p The sentiment analysis for #{follower} from Google was as follows:
+  p The sentiment score, which ranges from -1 to 1 (negative to postive), was #{sentiment['score']}
+  p The magnitude of this sentiment, the higher means to stronger, was #{sentiment['magnitude']}

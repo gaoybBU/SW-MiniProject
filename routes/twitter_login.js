@@ -93,8 +93,12 @@ router.get('/callback', async(req, res, next) => {
 
     const response = await getAcessToken(req.query.oauth_token, req.query.oauth_verifier);
     console.log(response)
-    
-    res.send("Got callback!");
+
+    // Set cookie for logged in user
+    res.cookie('username', response["screen_name"], {expires: 0});
+    res.cookie('user_token', response["oauth_token"], {httpOnly: true});
+    res.cookie('user_token_secret', response["oauth_token_secret"], {httpOnly: true});
+    res.redirect("/");
 
 })
 

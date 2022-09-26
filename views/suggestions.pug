@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p Below are tweets you've made, one of the top replies to that tweet, and then the reply suggestion by OpenAI 
+  - for (i = 0; i < tweet_threads.length; i++)
+    h2 Tweet #{i + 1}
+    h5 Your tweet:
+    li(style="background-color:Tomato;")= tweet_threads[i]["tweet"]
+    h5 Reply (<a target="_blank" href=#{tweet_threads[i]["url"]}>Quick Link</a>)
+    li(style="background-color:Orange;")= tweet_threads[i]["reply"]
+    h5 Suggestion:
+    li(style="background-color:mediumseagreen;")= tweet_threads[i]["suggestion"]
+    br

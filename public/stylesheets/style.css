@@ -3,6 +3,11 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h5 {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
 a {
   color: #00B7FF;
 }
